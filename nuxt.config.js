@@ -1,4 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
+require('dotenv').config()
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -6,7 +7,7 @@ export default {
     titleTemplate: '%s - tennis-9-in-ssr',
     title: 'tennis-9-in-ssr',
     htmlAttrs: {
-      lang: 'en',
+      lang: 'ko',
     },
     meta: [
       { charset: 'utf-8' },
@@ -33,11 +34,11 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxtjs/firebase', '@nuxtjs/dotenv'],
+  modules: ['@nuxtjs/dotenv', '@nuxtjs/firebase'],
 
   firebase: {
+    // REQUIRED: Official config for firebase.initializeApp(config):
     config: {
-      // REQUIRED: Official config for firebase.initializeApp(config):
       apiKey: process.env.VUE_APP_apiKey,
       authDomain: process.env.VUE_APP_authDomain,
       databaseURL: process.env.VUE_APP_databaseURL,
@@ -54,7 +55,7 @@ export default {
       storage: true,
       database: true,
       analytics: true,
-      remoteConfig: true,
+      // remoteConfig: true,
     },
   },
 
