@@ -84,3 +84,13 @@
     </v-col>
   </v-row>
 </template>
+
+<script>
+export default {
+  async mounted() {
+    console.log('mounted')
+    const db2 = await this.$fire.firestore
+    console.log('here', db2)
+  },
+}
+</script>
