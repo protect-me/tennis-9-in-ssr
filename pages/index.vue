@@ -89,8 +89,8 @@
 export default {
   async mounted() {
     console.log('mounted')
-    const db2 = await this.$fire.firestore
-    console.log('here', db2)
+    const db = await this.$fire.firestore
+    console.log('here', db)
   },
 }
 </script>
