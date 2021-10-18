@@ -49,21 +49,19 @@ export default {
       measurementId: process.env.VUE_APP_measurementId,
     },
     services: {
-      services: {
-        auth: {
-          initialize: {
-            onAuthStateChangedAction: 'onAuthStateChanged',
-          },
-          ssr: true,
-          disableEmulatorWarnings: false,
+      auth: {
+        initialize: {
+          onAuthStateChangedAction: 'onAuthStateChanged',
         },
-        firestore: true,
-        functions: true,
-        storage: true,
-        database: true,
-        analytics: true,
-        // remoteConfig: true,
+        ssr: true,
+        disableEmulatorWarnings: false,
       },
+      firestore: true,
+      functions: true,
+      storage: true,
+      database: true,
+      analytics: true,
+      // remoteConfig: true,
     },
   },
 
