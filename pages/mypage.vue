@@ -18,13 +18,11 @@ export default {
   },
   methods: {
     async login() {
-      console.log('login')
       if (this.isProcessing) return
       this.isProcessing = true
       const provider = new this.$fireModule.auth.GoogleAuthProvider()
       try {
         const snapshot = await this.$fire.auth.signInWithPopup(provider)
-        console.log('로그인 성공')
       } catch (err) {
         alert('로그인 실패', err)
         console.log(err)
@@ -34,7 +32,6 @@ export default {
     },
 
     async logout() {
-      console.log('logout')
       if (this.isProcessing) return
       this.isProcessing = true
       try {

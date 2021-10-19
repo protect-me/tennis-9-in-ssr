@@ -1,17 +1,19 @@
 export default {
   async onAuthStateChanged({ commit }, { authUser }) {
+    let unsubscribe = null
     if (!authUser) {
-      commit('RESET_STORE')
+      commit('SET_USER', null)
+      if (unsubscribe) unsubscribe()
       return
     }
-    if (authUser && authUser.getIdToken) {
-      try {
-        const idToken = await authUser.getIdToken(true)
-        console.info('idToken', idToken)
-      } catch (e) {
-        console.error(e)
-      }
+    commit('SET_FIRE_USER', authUser)
+
+    const subscribe = (authUser) => {
+      const ref = this.$fire.firestore.collection('users').doc(authUser.uid)
+      unsubscribe = ref.onSnapshot((doc) => {
+        if (doc.exists) commit('SET_USER', doc.data())
+      }, console.error)
     }
-    commit('SET_AUTH_USER', { authUser })
+    subscribe(authUser)
   },
 }
