@@ -31,10 +31,11 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
+    '@nuxtjs/firebase',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxtjs/dotenv', '@nuxtjs/firebase'],
+  modules: ['@nuxtjs/dotenv'],
 
   firebase: {
     // REQUIRED: Official config for firebase.initializeApp(config):
@@ -57,7 +58,11 @@ export default {
         disableEmulatorWarnings: false,
       },
       firestore: true,
-      functions: true,
+      functions: {
+        location: 'asia-northeast3',
+        // emulatorPort: 12345,
+        // emulatorHost: 'http://10.10.10.3',
+      },
       storage: true,
       database: true,
       analytics: true,
