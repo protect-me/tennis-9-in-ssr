@@ -1,44 +1,30 @@
 <template>
-  <v-app dark>
-    <h1 v-if="error.statusCode === 404">
-      {{ pageNotFound }}
-    </h1>
-    <h1 v-else>
-      {{ otherError }}
-    </h1>
-    <NuxtLink to="/">
-      Home page
-    </NuxtLink>
-  </v-app>
+  <v-container class="error-container">
+    <v-card class="error-content">
+      <v-card-title>
+        <div>Page Not Found</div>
+      </v-card-title>
+      <v-card-subtitle>
+        <div>잘못된 요청입니다</div>
+      </v-card-subtitle>
+      <v-card-text>
+        <div>{{ $route.path }}</div>
+      </v-card-text>
+      <v-card-text>
+        <NuxtLink to="/">
+          홈으로
+        </NuxtLink>
+      </v-card-text>
+    </v-card>
+  </v-container>
 </template>
 
 <script>
-export default {
-  layout: 'empty',
-  props: {
-    error: {
-      type: Object,
-      default: null
-    }
-  },
-  data () {
-    return {
-      pageNotFound: '404 Not Found',
-      otherError: 'An error occurred'
-    }
-  },
-  head () {
-    const title =
-      this.error.statusCode === 404 ? this.pageNotFound : this.otherError
-    return {
-      title
-    }
-  }
-}
+export default {}
 </script>
 
-<style scoped>
-h1 {
-  font-size: 20px;
+<style>
+.error-container {
+  height: calc(100vh - 48px);
 }
 </style>
